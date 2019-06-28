@@ -1,0 +1,51 @@
+Short Answers :
+
+	•	Highlight few differences between Block storage ( EBS ) & Object storage (s3)
+  
+	S3 (Simple Storage Service) and EBS (Elastic Block Store) are two file storage services provided by Amazon. The main difference between them is with what they can be used with. EBS is specifically meant for EC2 (Elastic Computing Cloud) instances and is not accessible unless mounted to one.
+
+	•	 Highlight few differences between NoSQL & SQL databases
+	SQL databases are primarily called as Relational Databases (RDBMS);    whereas NoSQL database are primarily called as non-relational or distributed database.
+	SQL databases have predefined schema whereas NoSQL databases have  dynamic    schema for unstructured data.
+
+	•	Highlight few differences between ssh & http protocol
+	Both ssh and HTTP are protocols to communicate between client and server. Following are the basic difference between SSH and HTTP.
+	SSH means “Secure Shell”. It has a built-in username/password authentication system to establish a connection. It uses Port 22 to perform the negotiation or authentication process for connection. Authentication of the remote system is done by the use of public-key cryptography and if necessary, it allows the remote computer to authenticate users.
+	HTTP means HyperText Transfer Protocol. HTTP is the underlying protocol used by the World Wide Web and this protocol defines how messages are formatted and transmitted, and what actions Web servers and browsers should take in response to various commands.
+
+Task 2&3: Answer & Commands:
+
+	•	Created a bucket with santoshifinal in s3.
+	•	Added 2 IAM users with readonly s3 access and fullaccess s3.
+	•	Then, connected to my ec2 instance and ran below command
+		wget https://awstest321.s3.us-east-2.amazonaws.com/mysqlsampledatabase.sql
+
+Task 4: Commands :
+
+	1. wc -l mysqlsampledatabase.sql
+	2.sed 's/mysql/yoursql/g' mysqlsampledatabase.sql > newmysqlsampledatabasee.sql
+	3. grep "NULL" mysqlsampledatabase.sql  | wc -l
+
+
+Task 5: Commands :
+	•	sudo yum install mysql -y
+	•	mysql -h mytestdb.caen46ykn0fe.us-east-2.rds.amazonaws.com -uroot -ppassword
+	•	mysql -h mytestdb.caen46ykn0fe.us-east-2.rds.amazonaws.com -uroot -ppassword < mysqlsampledatabase.sql
+
+Task 6: Query :
+
+	select c.customername, p.productname from customers c join orders o on o.customername=c.customername join orderdetails od on o.ordernumber=od.ordernumber join products p on p.productcode=od.productcode;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
