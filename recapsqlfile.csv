@@ -1,0 +1,10 @@
+"Statement executed successfully."
+"Warehouse RECAP_WH successfully created."
+"Database RECAP_DB successfully created."
+"Table EMP_BASIC successfully created."
+employees01.csv_c.gz(0.00MB): [##########] 100.00% Done (0.205s, 0.00MB/s).
+"employees01.csv","employees01.csv.gz","370","288","NONE","GZIP","UPLOADED",""
+"employees01.csv.gz","LOADED","5","5","1","0","","","",""
+"Function EMPL successfully created."
+"alaudham2@sf_tuts.com","Prażmów"
+
