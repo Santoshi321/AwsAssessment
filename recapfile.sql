@@ -1,3 +1,7 @@
+--after creating this sql file excecute below command in CL
+--snowsql -c example -f Recapfile.sql -o output_format=csv -o header=false -o timing=false -o friendly=false  > RecapSqlFile.csv
+
+
 --using existing warehouse
 use demo_db;
 
@@ -34,4 +38,5 @@ create or replace function empl(first_n varchar)
   ;
    select * from table(empl('Avo'));
    
+
 
