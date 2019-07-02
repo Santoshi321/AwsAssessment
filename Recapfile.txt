@@ -1,0 +1,43 @@
+snowsql -c example
+use demo_db;
+
+create warehouse Recap_wh;
+
+use recap_wh;
+
+create database Recap_db;
+
+create table recap;
+
+create or replace table emp_basic (
+  first_name string ,
+  last_name string ,
+  email string ,
+  streetaddress string ,
+  city string ,
+  start_date date
+  );
+
+put file:///Users/sgandham/snowflake-tutorials/dataset/employee01*.csv @recap_db.public.%emp_basic;
+
+copy into emp_basic
+  from @%emp_basic
+  file_format = (type = csv field_optionally_enclosed_by='"')
+  pattern = '.*employee01.csv.gz'
+  on_error = 'skip_file';
+
+create or replace function empl(first_n varchar)
+  returns table (email varchar, city varchar)
+  as
+  $$
+    select email,city from emp_basic where first_name = first_n
+  $$
+  ;
+   select * from table(empl('Avo'));
+   
+
+snowsql -c example -d recap_db -w recap_wh -s public -q "select * from table (empl('Avo'))" -o output_format=csv -o header=false -o timing=false -o friendly=false  > RecapOutput.csv
+
+Contents of RecapOutput file :
+alaudham2@sf_tuts.com	Prażmów
+  
