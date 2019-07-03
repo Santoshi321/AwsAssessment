@@ -1,0 +1,71 @@
+1.seeking file from different indexes
+f = open ('/Users/sgandham/filepython.csv' )
+f.read()
+f.seek(0)
+f.read()
+f.seek(10)
+f.read()
+
+2.Go to 5th row in list and change rear end 4 column to add 2 
+#file accessing from disk
+
+result =int (l[4].split(',')[-4])+2
+f = open("/Users/sgandham/test.txt",'w')
+f.write(str(result))
+f.close()
+
+3.Import requests module and connect to a url file and do string methods. And output the result into a new file
+
+import requests
+r = requests.get("https://raw.githubusercontent.com/becloudready/snowflake-tutorials/master/dataset/employees01.csv")
+r.status_code
+content = r.text
+content.split(",")
+contentlist = content.split(",")
+output = contentlist[-2]
+f = open ("/Users/sgandham/excercise2.txt",'w')
+f.write(output)
+f.close()
+
+4.Import requests from s3 bucket object (file employees1) and do string methods and output the result into a new file
+import requests
+url = "https://samplebucket321.s3.amazonaws.com/employees01.csv"
+headers = {
+    'Host': "samplebucket.s3.amazonaws.com",
+    'X-Amz-Content-Sha256': "dnd",
+    'X-Amz-Date': "20190703T185829Z",
+    'Authorization': "xxxxxxx" Credential=Accesskey/20190703/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=35561ce4b87927678eb1223973b3fd",
+    'User-Agent': "PostmanRuntime/7.15.0",
+    'Accept': "*/*",
+    'Cache-Control': "no-cache",
+    'Postman-Token': "335c4892-4398-4022-c4ed-4d60-ba73-2071ee1f18b5",
+    'accept-encoding': "gzip, deflate",
+    'Connection': "keep-alive",
+    'cache-control': "no-cache"
+    }
+response = requests.request("GET", url, headers=headers)
+response.text
+empstr = response.text
+empstr.split(",")
+empstr2 =empstr.split(",")
+empstr2[-8].split(" ")
+(empstr2[-8].split(" ")[0])+2
+int(empstr2[-8].split(" ")[0])+2
+f = open ("/Users/sgandham/excercise3.txt",'w')
+f.write(str(int(empstr2[-8].split(" ")[0])+2))
+f.close()
+
+
+5.Using OS module and exploring different methods
+import os
+print (os.getcwd())
+print (os.getlogin())
+
+
+6.Using datetime module explore different methods
+import datetime
+datetime.datetime.now()
+datetime.date.today()
+dt = datetime.date.today()
+dt.strftime("%d/%m/%y")
+
